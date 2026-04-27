@@ -16,3 +16,10 @@ Refer to the files in the order specified below for more details:
 
 - [lab_instructions_part1.md](lab_instructions_part1.md)
 - [lab_instructions_part2.md](lab_instructions_part2.md)
+
+"## Team Roles
+- Fiona Nduu:  Update README.MD— branch protection and repository setup
+- Salim Rashid: data source Researcher — project board and iterations
+- Hassan Mvurya: star schema Researcher — milestone creation and tracking
+- Amanda Koki: Research on ETL, ELT and EtLT — ETL/ELT/EtLT documentation
+- Brian Kiptoo: Governance Researcher — data governance and PII"
