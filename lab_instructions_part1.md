@@ -38,7 +38,7 @@ All team members should clone the repository to their local machines:
 ## 3. Create a Project (Member 2)
 
 1. Go to the **Projects** tab in the repository and click on **New Project**.
-2. Select the **Iterative development** template and name it "**202604 Business Intelligence Labs**".
+2. Select the **Iterative development** template and name it "**[GROUP NAME] Business Intelligence Labs**".
 3. Ensure that your team members are added to the project as collaborators with **Admin** rights. This can be done in the project **Settings** > **Manage access**.
 4. Create iterations and specify the start and end dates for each iteration. This is available under the project **Settings** > **Iterations**.
 
@@ -64,7 +64,7 @@ Have a discussion as a team to determine the specific technical tasks that need 
 2. Each issue should be assigned to the respective member of the team.
 3. Each issue should be assigned the label "**enhancement**".
 4. Each issue should be assigned the type "**Feature**".
-5. Each issue should be assigned to the "**202604 Business Intelligence Labs**" project.
+5. Each issue should be assigned to the "**[GROUP NAME] Business Intelligence Labs**" project.
 
 Example issues for the lab:
 
@@ -78,7 +78,7 @@ Example issues for the lab:
 
 ## 6. Assigning Issues to Iterations and Managing the Status of Issues
 
-1. Go to the **Projects** tab and open the "**202604 Business Intelligence Labs**" project. Navigate to the **My items** view where you can see all the issues in the backlog.
+1. Go to the **Projects** tab and open the "**[GROUP NAME] Business Intelligence Labs**" project. Navigate to the **My items** view where you can see all the issues in the backlog.
 2. For each issue, click on the issue title and assign it to the appropriate iteration based on its milestone. Example:
    * Issues #1, #2, and #3 are planned for Iteration 1, which corresponds to the **50% Complete Milestone**.
    * Issue #4 is planned for Iteration 2, which corresponds to the **75% Complete Milestone**.
@@ -186,7 +186,7 @@ git push origin feature/lab-number/description
 2. Name the PR appropriately, e.g., "*Merge feature/lab-1/update-project-readme into main*" and add a detailed description of the changes made. This description should provide context for the reviewer, explaining the motivation behind the changes and any relevant details that would help them understand the purpose of the PR.
 3. Link the PR to the corresponding issue by including `#issue-number` in the PR description. This creates a connection between the changes and the issue it addresses. A common way to include the issue number is to use the text "`Closes #issue-number`" in the PR description, e.g., "`Closes #2`". This not only links the PR to the issue but also automatically closes the issue when the PR is merged.
 4. Assign a teammate to perform a **Code Review**. If this was your research/project, then your research supervisor would be the assigned reviewer. The author of the PR should not merge their own PR. This is a critical aspect of team governance and ensures that all changes are reviewed by at least one other team member before being integrated into the main branch.
-5. The assignees can be anyone who contributed to the commits in the branch, the label can be "**enhancement**" for a new feature, the projects should be the 202604 Business Intelligence Labs, and the milestone should correspond to the one assigned to the issue that the feature branch addresses.
+5. The assignees can be anyone who contributed to the commits in the branch, the label can be "**enhancement**" for a new feature, the project should be the **[GROUP NAME] Business Intelligence Labs**, and the milestone should correspond to the one assigned to the issue that the feature branch addresses.
 
 ### Step D: The Code Review
 
@@ -241,9 +241,11 @@ Member 4 merges first through the normal PR process. By the time Member 5 attemp
 
 ### Resolution process (Member 5)
 
-**IMPORTANT:** The standard practice **before opening any PR** is to update your feature branch with the latest changes from main. This is where conflicts are detected.
+#### Option 1
 
-Before opening a PR, Member 5 updates their local feature branch with the latest state of main:
+**IMPORTANT:** The standard practice **before opening any PR** is to update your feature branch with the latest changes from main. This is one of the places where conflicts can be detected.
+
+Before opening a PR to merge `feature/lab-number/description` into `main`, Member 5 updates their local feature branch with the latest state of main:
 
 ```bash
 git checkout feature/lab-number/description
@@ -258,7 +260,7 @@ CONFLICT (content): Merge conflict in README.md
 Automatic merge failed; fix conflicts then commit the result.
 ```
 
-Open README.md in your IDE (VS Code). Git marks the conflict zone as follows:
+Open the file with the merge conflict (README.md in this case) in your IDE (VS Code). Git marks the conflict zone as follows:
 
 ```text
 <<<<<<< HEAD
@@ -272,6 +274,24 @@ The section between **<<<<<<< HEAD** and **=======** is your version
 
 The section between **=======** and **>>>>>>> origin/main** is the version already in main.
 
+---
+
+#### Option 2
+
+Member 5 can proceed to push the changes to their branch and then open the PR without updating their local branch with the changes in main.
+
+To open a PR without updating the branch with changes from main:
+
+```bash
+git push origin feature/lab-number/description
+```
+
+When they attempt to merge, GitHub will detect the conflict and prevent the merge until the conflict is resolved. The process of resolving the conflict in the web interface in the origin (on [GitHub.com](https://github.com)) is similar to the local resolution process described below, but it may be more cumbersome for complex conflicts with multiple merge conflicts at a time.
+
+**The 'GitHub Flow' recommends not having your branches opened for too long because it increases the chances of you changing the same lines as other team members, which leads to conflicts.**
+
+---
+
 Member 5 must decide what the final file should say. In this case, both attributions are valid — combine them as follows:
 
 ```text
@@ -280,14 +300,20 @@ Project lead: Member 4 (coordination) and Member 5 (governance and audit).
 
 Delete all three conflict markers (<<<<<<<, =======, >>>>>>>) and save the file.
 
-Stage the resolved file and complete the merge:
+**If you were using Option 1**, stage the resolved file and complete the merge:
 
 ```bash
 git add README.md
 git commit -m "Resolve merge conflict: consolidate dual attribution in README"
 ```
 
+**If you were using Option 2**, click the "Resolve conflicts" button in the GitHub web interface, edit the file to resolve the conflict as described above, and then commit the resolution directly in the web interface.
+
+---
+
 Member 5's branch now contains a clean merge commit. Proceed to push and open your PR as normal.
+
+---
 
 **Key principle:** A conflict is not an error — it is Git asking a human to make a decision that a machine cannot. The discipline lies in reading both versions carefully before choosing, not in simply accepting one side and discarding the other.
 
