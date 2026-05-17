@@ -34,3 +34,7 @@ PII is any data that can identify a specific individual:
 3. Set **data retention policies** — delete PII when no longer needed
 4. Conduct regular **access reviews** to revoke stale permissions
 EOF
+
+## Data Classification Levels
+Data must be classified as Public, Internal, Confidential, or 
+Restricted before access rules are applied.
