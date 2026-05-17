@@ -339,3 +339,4 @@ must be addressed before data enters the warehouse:
 
 Data sources are the entry point of the BI value chain. Their
 characteristics determine every downstream design decision:
+This is a simulated piece of content.
